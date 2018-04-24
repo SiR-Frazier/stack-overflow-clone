@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :password
   validates_confirmation_of :password
+  validates :password, length: { minimum: 8 }
   validates :display_name, :presence => true
   validates :email, :presence => true, :uniqueness => true
   before_save :encrypt_password
